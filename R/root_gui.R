@@ -283,7 +283,7 @@ AddHandler <- function(){
 }
                     )
 
-  add3rdmousepopupmenu(.rqda$.fnames_rqda, GetFileNamesWidgetMenu())
+  addRightclickPopupMenu(.rqda$.fnames_rqda, GetFileNamesWidgetMenu())
   ## right click to add file to a case category
 
   addhandlerdoubleclick(.rqda$.fnames_rqda, handler <- function(h,...) {
@@ -305,7 +305,7 @@ AddHandler <- function(){
     }
                         )
 
-  add3rdmousepopupmenu(.rqda$.codes_rqda, GetCodesNamesWidgetMenu())
+  addRightclickPopupMenu(.rqda$.codes_rqda, GetCodesNamesWidgetMenu())
 
   addHandlerClicked(.rqda$.codes_rqda,handler <- function(h,...){
     ClickHandlerFun(.rqda$.codes_rqda,buttons=c("MarCodB1"),codingTable=.rqda$codingTable)
@@ -442,14 +442,14 @@ AddHandler <- function(){
   }
                         )
 
-  add3rdmousepopupmenu(.rqda$.CodeCatWidget, GetCodeCatWidgetMenu())
+  addRightclickPopupMenu(.rqda$.CodeCatWidget, GetCodeCatWidgetMenu())
 
   addhandlerdoubleclick(.rqda$.CodeofCat,handler=function(h,...) {
     retrieval(Fid=GetFileId(condition=.rqda$TOR,type="coded"),CodeNameWidget=.rqda$.CodeofCat)
   }
                         )
 
-  add3rdmousepopupmenu(.rqda$.CodeofCat, GetCodeofCatWidgetMenu())
+  addRightclickPopupMenu(.rqda$.CodeofCat, GetCodeofCatWidgetMenu())
 
   addHandlerClicked(.rqda$.FileCatWidget,handler <- function(h,...){
     if (length(svalue(.rqda$.FileCatWidget))>0){
@@ -466,7 +466,7 @@ AddHandler <- function(){
   }
                         )
 
-  add3rdmousepopupmenu(.rqda$.FileCatWidget, GetFileCatWidgetMenu())
+  addRightclickPopupMenu(.rqda$.FileCatWidget, GetFileCatWidgetMenu())
 
   addhandlerdoubleclick(.rqda$.FileofCat, handler <- function(h,...) {
     ViewFileFun(FileNameWidget=.rqda$.FileofCat)
@@ -484,12 +484,12 @@ AddHandler <- function(){
   }
                     )
 
-  add3rdmousepopupmenu(.rqda$.FileofCat, GetFileofCatWidgetMenu())
+  addRightclickPopupMenu(.rqda$.FileofCat, GetFileofCatWidgetMenu())
 
-  add3rdmousepopupmenu(.rqda$.CasesNamesWidget, GetCaseNamesWidgetMenu())
+  addRightclickPopupMenu(.rqda$.CasesNamesWidget, GetCaseNamesWidgetMenu())
   ## popup menu by right-click on CaseNamesWidget
 
-  add3rdmousepopupmenu(.rqda$.FileofCase, GetFileofCaseWidgetMenu())
+  addRightclickPopupMenu(.rqda$.FileofCase, GetFileofCaseWidgetMenu())
 
   addhandlerdoubleclick(.rqda$.FileofCase, handler <- function(h,...) {
     ViewFileFun(FileNameWidget=.rqda$.FileofCase)
