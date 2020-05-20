@@ -138,18 +138,18 @@ closeProjBF <- function(){
     enabled(.rqda$.AttrNamesWidget) <- FALSE
     enabled(.rqda$.FileCatWidget) <- FALSE
     enabled(.rqda$.FileofCat) <- FALSE
-    gtkWidgetSetSensitive(button$cloprob,FALSE)
-    gtkWidgetSetSensitive(button$BacProjB,FALSE)
+    blockHandler(button$cloprob)
+    blockHandler(button$BacProjB)
     enabled(button$saveAsB) <- FALSE
-    gtkWidgetSetSensitive(button$proj_memo,FALSE)
-    gtkWidgetSetSensitive(button$CleProB,FALSE)
-    gtkWidgetSetSensitive(button$CloAllCodB,FALSE)
-    gtkWidgetSetSensitive(button$ImpFilB,FALSE)
+    blockHandler(button$proj_memo)
+    blockHandler(button$CleProB)
+    blockHandler(button$CloAllCodB)
+    blockHandler(button$ImpFilB)
     enabled(button$NewFilB) <- FALSE
-    gtkWidgetSetSensitive(button$DelFilB,FALSE)
-    gtkWidgetSetSensitive(button$VieFilB,FALSE)
-    gtkWidgetSetSensitive(button$FilMemB,FALSE)
-    gtkWidgetSetSensitive(button$FilRenB,FALSE)
+    blockHandler(button$DelFilB)
+    blockHandler(button$VieFilB)
+    blockHandler(button$FilMemB)
+    blockHandler(button$FilRenB)
     enabled(button$FileAttrB) <- FALSE
     enabled(button$AddJouB) <- FALSE
     enabled(button$DelJouB) <- FALSE
