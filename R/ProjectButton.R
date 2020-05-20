@@ -127,7 +127,7 @@ closeProjBF <- function(){
     names(.rqda$.FileofCase)<-gettext("Files of This Case", domain = "R-RQDA")
     names(.rqda$.FileCatWidget)<-gettext("File Category", domain = "R-RQDA")
     names(.rqda$.FileofCat)<-gettext("Files of This Category", domain = "R-RQDA")
-    gtkWidgetSetSensitive(.rqda$.fnames_rqda,FALSE)
+    blockHandler(.rqda$.fnames_rqda)
     enabled(.rqda$.JournalNamesWidget) <- FALSE
     enabled(.rqda$.codes_rqda) <- FALSE
     enabled(.rqda$.SettingsGui) <- FALSE

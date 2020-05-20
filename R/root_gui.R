@@ -217,7 +217,7 @@ if (isTRUE(.rqda$isLaunched)) {
   assign("isLaunched",TRUE,envir=.rqda)
 
 ##########################
-  gtkWidgetSetSensitive(.fnames_rqda,FALSE)
+  blockHandler(.fnames_rqda)
   enabled(.JournalNamesWidget) <- FALSE
   enabled(.rqda$.codes_rqda) <- FALSE
   enabled(.rqda$.SettingsGui) <- FALSE
