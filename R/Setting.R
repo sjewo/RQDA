@@ -65,7 +65,7 @@ addSettingGUI <- function(container,width=12){
   ans <- glabel(gettext("Click to set font", domain = "R-RQDA"),container = container,handler=function(h,...) setFont(default=.rqda$font))## set font for widget
   gtkWidgetSetTooltipText(getToolkitWidget(ans), gettext("Set fonts for memo widgets.", domain = "R-RQDA"))
 
-  SettingFL <- gformlayout(Setting, container = container, expand=TRUE)
+  SettingFL <- gformlayout(align = "default", spacing = 5, container = container, Setting, expand=TRUE)
 
   ButtonContainer <- ggroup(container = container) ##, width=100) ## not necessary to set width here
   addSpring(ButtonContainer)

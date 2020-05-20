@@ -15,7 +15,7 @@ if (isTRUE(.rqda$isLaunched)) {
                              )
 
   mainIcon <- system.file("icon", "mainIcon.png", package = "RQDA")
-  .root_rqdagui@widget@widget$SetIconFromFile(mainIcon)
+  #.root_rqdagui$set_icon(mainIcon)
   ## set an icon for the main programme.
   ".nb_rqdagui" <- gnotebook(4,container=.root_rqdagui,closebuttons=FALSE)
 
@@ -102,7 +102,8 @@ if (isTRUE(.rqda$isLaunched)) {
   ".CodeCatWidget" <- gtable(character(0),container=.Ccat_PW,expand=TRUE,multiple=TRUE)
   names(.CodeCatWidget)<- gettext("Code Category", domain = "R-RQDA")
   ".CodeofCat" <- gtable(gettext("Please click Update", domain = "R-RQDA"),container=.Ccat_PW,expand=TRUE,multiple=TRUE)
-  .CodeofCat[] <- NULL;names(.CodeofCat)<-gettext("Codes of This Category", domain = "R-RQDA")
+  #.CodeofCat[] <- NULL;
+  names(.CodeofCat)<-gettext("Codes of This Category", domain = "R-RQDA")
   .codecat_buttons[1,1] <- AddCodeCatButton(gettext("Add", domain = "R-RQDA"))
   .codecat_buttons[1,2] <- DeleteCodeCatButton(gettext("Delete", domain = "R-RQDA")) ## should take care of treecode table
   .codecat_buttons[1,3] <- CodeCat_RenameButton(gettext("Rename", domain = "R-RQDA"))
@@ -216,7 +217,7 @@ if (isTRUE(.rqda$isLaunched)) {
   assign("isLaunched",TRUE,envir=.rqda)
 
 ##########################
-  gtkWidgetSetSensitive(.fnames_rqda@widget@widget,FALSE)
+  gtkWidgetSetSensitive(.fnames_rqda,FALSE)
   enabled(.JournalNamesWidget) <- FALSE
   enabled(.rqda$.codes_rqda) <- FALSE
   enabled(.rqda$.SettingsGui) <- FALSE
@@ -267,10 +268,10 @@ AddHandler <- function(){
     Fid <- GetFileId(,"select")
     if (!is.null(Fid) && length(Fid)==1) {
       names(.rqda$.fnames_rqda) <- sprintf(gettext("Selected File id is %s", domain = "R-RQDA"),Fid)
-      gtkWidgetSetSensitive(button$DelFilB@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$VieFilB@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$FilMemB@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$FilRenB@widget@widget,TRUE)
+      gtkWidgetSetSensitive(button$DelFilB,TRUE)
+      gtkWidgetSetSensitive(button$VieFilB,TRUE)
+      gtkWidgetSetSensitive(button$FilMemB,TRUE)
+      gtkWidgetSetSensitive(button$FilRenB,TRUE)
       ## dynamically change the label of attribute(s)
       if ((nattr <- length(.rqda$.AttrNamesWidget[]))!=0) {
           enabled(button$FileAttrB) <- TRUE

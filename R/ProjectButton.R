@@ -12,15 +12,15 @@ NewProjectButton <- function(container){
      path <- gsub("\\\\","/",path,fixed=TRUE)
      path <- gsub("/","/ ",path,fixed=TRUE)
       svalue(.rqda$.currentProj) <- gsub("/ ","/",paste(strwrap(path,60),collapse="\n"),fixed=TRUE)
-      gtkWidgetSetSensitive(button$cloprob@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$BacProjB@widget@widget,TRUE)
+      gtkWidgetSetSensitive(button$cloprob,TRUE)
+      gtkWidgetSetSensitive(button$BacProjB,TRUE)
       enabled(button$saveAsB) <- TRUE
-      gtkWidgetSetSensitive(button$proj_memo@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$CleProB@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$CloAllCodB@widget@widget,TRUE)
-      gtkWidgetSetSensitive(button$ImpFilB@widget@widget,TRUE)
+      gtkWidgetSetSensitive(button$proj_memo,TRUE)
+      gtkWidgetSetSensitive(button$CleProB,TRUE)
+      gtkWidgetSetSensitive(button$CloAllCodB,TRUE)
+      gtkWidgetSetSensitive(button$ImpFilB,TRUE)
       enabled(button$NewFilB) <- TRUE
-      gtkWidgetSetSensitive(.rqda$.fnames_rqda@widget@widget,TRUE)
+      gtkWidgetSetSensitive(.rqda$.fnames_rqda,TRUE)
       enabled(button$AddJouB) <- TRUE
       enabled(button$AddCodB) <- TRUE
       enabled(button$AddCodCatB) <- TRUE
@@ -81,15 +81,15 @@ openProject <- function(path,updateGUI=FALSE) {
         path <- gsub("\\\\","/", path)
         path <- gsub("/","/ ",path)
         svalue(.rqda$.currentProj) <- gsub("/ ","/",paste(strwrap(path,50),collapse="\n"))
-        gtkWidgetSetSensitive(button$cloprob@widget@widget,TRUE)
-        gtkWidgetSetSensitive(button$BacProjB@widget@widget,TRUE)
+        gtkWidgetSetSensitive(button$cloprob,TRUE)
+        gtkWidgetSetSensitive(button$BacProjB,TRUE)
         enabled(button$saveAsB) <- TRUE
-        gtkWidgetSetSensitive(button$proj_memo@widget@widget,TRUE)
-        gtkWidgetSetSensitive(button$CleProB@widget@widget,TRUE)
-        gtkWidgetSetSensitive(button$CloAllCodB@widget@widget,TRUE)
-        gtkWidgetSetSensitive(button$ImpFilB@widget@widget,TRUE)
+        gtkWidgetSetSensitive(button$proj_memo,TRUE)
+        gtkWidgetSetSensitive(button$CleProB,TRUE)
+        gtkWidgetSetSensitive(button$CloAllCodB,TRUE)
+        gtkWidgetSetSensitive(button$ImpFilB,TRUE)
         enabled(button$NewFilB) <- TRUE
-        gtkWidgetSetSensitive(.rqda$.fnames_rqda@widget@widget,TRUE)
+        gtkWidgetSetSensitive(.rqda$.fnames_rqda,TRUE)
         enabled(button$AddJouB) <- TRUE
         enabled(button$AddCodB) <- TRUE
         enabled(button$AddCodCatB) <- TRUE
@@ -127,7 +127,7 @@ closeProjBF <- function(){
     names(.rqda$.FileofCase)<-gettext("Files of This Case", domain = "R-RQDA")
     names(.rqda$.FileCatWidget)<-gettext("File Category", domain = "R-RQDA")
     names(.rqda$.FileofCat)<-gettext("Files of This Category", domain = "R-RQDA")
-    gtkWidgetSetSensitive(.rqda$.fnames_rqda@widget@widget,FALSE)
+    gtkWidgetSetSensitive(.rqda$.fnames_rqda,FALSE)
     enabled(.rqda$.JournalNamesWidget) <- FALSE
     enabled(.rqda$.codes_rqda) <- FALSE
     enabled(.rqda$.SettingsGui) <- FALSE
@@ -138,18 +138,18 @@ closeProjBF <- function(){
     enabled(.rqda$.AttrNamesWidget) <- FALSE
     enabled(.rqda$.FileCatWidget) <- FALSE
     enabled(.rqda$.FileofCat) <- FALSE
-    gtkWidgetSetSensitive(button$cloprob@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$BacProjB@widget@widget,FALSE)
+    gtkWidgetSetSensitive(button$cloprob,FALSE)
+    gtkWidgetSetSensitive(button$BacProjB,FALSE)
     enabled(button$saveAsB) <- FALSE
-    gtkWidgetSetSensitive(button$proj_memo@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$CleProB@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$CloAllCodB@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$ImpFilB@widget@widget,FALSE)
+    gtkWidgetSetSensitive(button$proj_memo,FALSE)
+    gtkWidgetSetSensitive(button$CleProB,FALSE)
+    gtkWidgetSetSensitive(button$CloAllCodB,FALSE)
+    gtkWidgetSetSensitive(button$ImpFilB,FALSE)
     enabled(button$NewFilB) <- FALSE
-    gtkWidgetSetSensitive(button$DelFilB@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$VieFilB@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$FilMemB@widget@widget,FALSE)
-    gtkWidgetSetSensitive(button$FilRenB@widget@widget,FALSE)
+    gtkWidgetSetSensitive(button$DelFilB,FALSE)
+    gtkWidgetSetSensitive(button$VieFilB,FALSE)
+    gtkWidgetSetSensitive(button$FilMemB,FALSE)
+    gtkWidgetSetSensitive(button$FilRenB,FALSE)
     enabled(button$FileAttrB) <- FALSE
     enabled(button$AddJouB) <- FALSE
     enabled(button$DelJouB) <- FALSE
@@ -194,7 +194,7 @@ CloseProjectButton <- function(container){
   }
                      )
   assign("cloprob",cloprob,envir=button)
-  gtkWidgetSetSensitive(button$cloprob@widget@widget,FALSE)
+  blockHandler(button$cloprob)
 }
 
 BackupProjectButton <- function(container){
@@ -203,7 +203,7 @@ BackupProjectButton <- function(container){
   }
                       )
   assign("BacProjB",BacProjB,envir=button)
-  gtkWidgetSetSensitive(button$BacProjB@widget@widget,FALSE)
+  blockHandler(button$BacProjB)
 }
 
 
@@ -217,7 +217,7 @@ Proj_MemoButton <- function(label=gettext("Project Memo", domain = "R-RQDA"),con
   }
                        )
   assign("proj_memo",proj_memo,envir=button)
-  gtkWidgetSetSensitive(button$proj_memo@widget@widget,FALSE)
+  blockHandler(button$proj_memo)
 }
 
 
@@ -227,7 +227,7 @@ CleanProjButton <- function(label=gettext("Clean Project", domain = "R-RQDA"),co
   }
                      )
   assign("CleProB",CleProB,envir=button)
-  gtkWidgetSetSensitive(button$CleProB@widget@widget,FALSE)
+  blockHandler(button$CleProB)
 }
 
 CloseAllCodingsButton <- function(label=gettext("Close All Codings", domain = "R-RQDA"),container,...){
@@ -236,7 +236,7 @@ CloseAllCodingsButton <- function(label=gettext("Close All Codings", domain = "R
   }
                         )
   assign("CloAllCodB",CloAllCodB,envir=button)
-  gtkWidgetSetSensitive(button$CloAllCodB@widget@widget,FALSE)
+  blockHandler(button$CloAllCodB)
 }
 
 
