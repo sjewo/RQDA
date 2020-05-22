@@ -247,7 +247,7 @@ GetFileNamesWidgetMenu <- function()
       fName <- gfile(type='save',filter=list("csv"=list(pattern=c("*.csv"))))
       Encoding(fName) <- "UTF-8"
       if (length(grep(".csv$",fName))==0) fName <- sprintf("%s.csv",fName)
-      write.csv(GetAttr("file"), row.namess=FALSE, file=fName, na="")
+      write.csv(GetAttr("file"), row.names=FALSE, file=fName, na="")
     }
   }
   FileNamesWidgetMenu[[gettext("Edit Selected File", domain = "R-RQDA")]]$handler <- function(h, ...) {

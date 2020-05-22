@@ -8,7 +8,7 @@ AddNewFileFunOfCase <- function ()
         Encoding(content) <- "UTF-8"
         selend <- nchar(content)
         Dat <- data.frame(caseid=caseid,fid=fid,selfirst=0,selend=selend,status=1,owner=.rqda$owner,date=date(),memo=NA)
-        dbWriteTable(.rqda$qdacon,"caselinkage",Dat,row.namess=FALSE,append=TRUE)
+        dbWriteTable(.rqda$qdacon,"caselinkage",Dat,row.names=FALSE,append=TRUE)
         UpdateFileofCaseWidget()
     }
 
