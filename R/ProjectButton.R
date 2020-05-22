@@ -12,15 +12,15 @@ NewProjectButton <- function(container){
      path <- gsub("\\\\","/",path,fixed=TRUE)
      path <- gsub("/","/ ",path,fixed=TRUE)
       svalue(.rqda$.currentProj) <- gsub("/ ","/",paste(strwrap(path,60),collapse="\n"),fixed=TRUE)
-      gtkWidgetSetSensitive(button$cloprob,TRUE)
-      gtkWidgetSetSensitive(button$BacProjB,TRUE)
+      unblockHandler(button$cloprob)
+      unblockHandler(button$BacProjB)
       enabled(button$saveAsB) <- TRUE
-      gtkWidgetSetSensitive(button$proj_memo,TRUE)
-      gtkWidgetSetSensitive(button$CleProB,TRUE)
-      gtkWidgetSetSensitive(button$CloAllCodB,TRUE)
-      gtkWidgetSetSensitive(button$ImpFilB,TRUE)
+      unblockHandler(button$proj_memo)
+      unblockHandler(button$CleProB)
+      unblockHandler(button$CloAllCodB)
+      unblockHandler(button$ImpFilB)
       enabled(button$NewFilB) <- TRUE
-      gtkWidgetSetSensitive(.rqda$.fnames_rqda,TRUE)
+      unblockHandler(.rqda$.fnames_rqda)
       enabled(button$AddJouB) <- TRUE
       enabled(button$AddCodB) <- TRUE
       enabled(button$AddCodCatB) <- TRUE
@@ -81,15 +81,15 @@ openProject <- function(path,updateGUI=FALSE) {
         path <- gsub("\\\\","/", path)
         path <- gsub("/","/ ",path)
         svalue(.rqda$.currentProj) <- gsub("/ ","/",paste(strwrap(path,50),collapse="\n"))
-        gtkWidgetSetSensitive(button$cloprob,TRUE)
-        gtkWidgetSetSensitive(button$BacProjB,TRUE)
+        unblockHandler(button$cloprob)
+        unblockHandler(button$BacProjB)
         enabled(button$saveAsB) <- TRUE
-        gtkWidgetSetSensitive(button$proj_memo,TRUE)
-        gtkWidgetSetSensitive(button$CleProB,TRUE)
-        gtkWidgetSetSensitive(button$CloAllCodB,TRUE)
-        gtkWidgetSetSensitive(button$ImpFilB,TRUE)
+        unblockHandler(button$proj_memo)
+        unblockHandler(button$CleProB)
+        unblockHandler(button$CloAllCodB)
+        unblockHandler(button$ImpFilB)
         enabled(button$NewFilB) <- TRUE
-        gtkWidgetSetSensitive(.rqda$.fnames_rqda,TRUE)
+        unblockHandler(.rqda$.fnames_rqda)
         enabled(button$AddJouB) <- TRUE
         enabled(button$AddCodB) <- TRUE
         enabled(button$AddCodCatB) <- TRUE

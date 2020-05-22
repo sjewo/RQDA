@@ -268,10 +268,10 @@ AddHandler <- function(){
     Fid <- GetFileId(,"select")
     if (!is.null(Fid) && length(Fid)==1) {
       names(.rqda$.fnames_rqda) <- sprintf(gettext("Selected File id is %s", domain = "R-RQDA"),Fid)
-      gtkWidgetSetSensitive(button$DelFilB,TRUE)
-      gtkWidgetSetSensitive(button$VieFilB,TRUE)
-      gtkWidgetSetSensitive(button$FilMemB,TRUE)
-      gtkWidgetSetSensitive(button$FilRenB,TRUE)
+      unblockHandler(button$DelFilB)
+      unblockHandler(button$VieFilB)
+      unblockHandler(button$FilMemB)
+      unblockHandler(button$FilRenB)
       ## dynamically change the label of attribute(s)
       if ((nattr <- length(.rqda$.AttrNamesWidget[]))!=0) {
           enabled(button$FileAttrB) <- TRUE
