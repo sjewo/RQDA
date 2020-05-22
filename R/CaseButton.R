@@ -97,7 +97,7 @@ MarkCaseFun <- function(){
                           owner=.rqda$owner,date=date(),memo="")
         if (nrow(ExistLinkage)==0){
           ## if there are no relevant caselinkage, write the caselinkage table
-          success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.name=FALSE,append=TRUE)
+          success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.names=FALSE,append=TRUE)
           if (!success) gmessage(gettext("Fail to write to database.", domain = "R-RQDA"))
         } else {
           Relations <- apply(ExistLinkage,1,FUN=function(x) relation(x[c("selfirst","selend")],c(ans$start,ans$end)))
@@ -108,7 +108,7 @@ MarkCaseFun <- function(){
             ExistLinkage$Start <- sapply(Relations,FUN=function(x)x$UnionIndex[1])
             ExistLinkage$End <- sapply(Relations,FUN=function(x)x$UnionIndex[2])
             if (all(ExistLinkage$Relation=="proximity")){
-              success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.name=FALSE,append=TRUE)
+              success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.names=FALSE,append=TRUE)
               if (!success) gmessage(gettext("Fail to write to database.", domain = "R-RQDA"))
             } else {
               del1 <- ExistLinkage$WhichMin==2 & ExistLinkage$Relation =="inclusion"; del1[is.na(del1)] <- FALSE
@@ -124,7 +124,7 @@ MarkCaseFun <- function(){
               DAT <- data.frame(caseid=currentCid,fid=currentFid,
                                 selfirst=Sel[1],selend=Sel[2],status=1,
                                 owner=.rqda$owner,date=date(),memo=memo)
-              success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.name=FALSE,append=TRUE)
+              success <- dbWriteTable(.rqda$qdacon,"caselinkage",DAT,row.names=FALSE,append=TRUE)
               if (!success) gmessage(gettext("Fail to write to database.", domain = "R-RQDA"))
             }
             }
@@ -226,7 +226,7 @@ GetCaseNamesWidgetMenu <- function()
                           fid <- fileoutofcase[fileoutofcase$name %in% Selected,"id"]
                           selend <- nchar(fileoutofcase[fileoutofcase$name %in% Selected,"file"])
                           Dat <- data.frame(caseid=caseid,fid=fid,selfirst=0,selend=selend,status=1,owner=.rqda$owner,date=date(),memo=NA)
-                          dbWriteTable(.rqda$qdacon,"caselinkage",Dat,row.names=FALSE,append=TRUE)
+                          dbWriteTable(.rqda$qdacon,"caselinkage",Dat,row.namess=FALSE,append=TRUE)
                           UpdateFileofCaseWidget()
     }})
       }
@@ -269,7 +269,7 @@ GetCaseNamesWidgetMenu <- function()
       fName <- gfile(type='save',filter=list("csv"=list(pattern=c("*.csv"))))
       Encoding(fName) <- "UTF-8"
       if (length(grep(".csv$",fName))==0) fName <- sprintf("%s.csv",fName)
-      write.csv(GetAttr("case"), row.names=FALSE, file=fName, na="")
+      write.csv(GetAttr("case"), row.namess=FALSE, file=fName, na="")
     }
   }
   CaseNamesWidgetMenu[[gettext("Sort All by Created Time", domain = "R-RQDA")]]$handler <- function(h,...){

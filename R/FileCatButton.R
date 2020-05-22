@@ -123,7 +123,7 @@ FileCatAddToButton <- function(label=gettext("AddTo", domain = "R-RQDA"),Widget=
         ## Selected <- iconv(Selected,to="UTF-8") ## already Encoded as UTF-8.
         fid <- fileoutofcat[fileoutofcat$name %in% Selected,"id"]
         Dat <- data.frame(fid=fid,catid=catid,date=date(),dateM=date(),memo=NA,status=1,owner=.rqda$owner)
-        dbWriteTable(.rqda$qdacon,"treefile",Dat,row.names=FALSE,append=TRUE)
+        dbWriteTable(.rqda$qdacon,"treefile",Dat,row.namess=FALSE,append=TRUE)
         UpdateFileofCatWidget()
       }
     }
@@ -188,7 +188,7 @@ FileCatDropFromButton <- function(label=gettext("DropFrom", domain = "R-RQDA"),W
 ##     ## write only when the selected file associated with specific f-cat is not there
 ##       DAT <- data.frame(fid=fid[!fid %in% exist$fid], catid=Fcatid, date=date(),dateM=date(),memo='',status=1)
 ##       ## should pay attention to the var order of DAT, must be the same as that of treefile table
-##       success <- dbWriteTable(.rqda$qdacon,"treefile",DAT,row.name=FALSE,append=TRUE)
+##       success <- dbWriteTable(.rqda$qdacon,"treefile",DAT,row.names=FALSE,append=TRUE)
 ##       ## write to caselinkage table
 ##       if (success) {
 ##       UpdateFileofCatWidget()

@@ -124,7 +124,7 @@ saveFUN4CaseAttr <- function(button,data){
     if (any(new_idx)){
     ## add the new variable to table
     vars <- data.frame(variable=ans[new_idx,1],value=ans[new_idx,2],caseID=MoreArgs$caseId,date=date(),dateM=NA,owner=.rqda$owner,status=1)
-    dbWriteTable(.rqda$qdacon, "caseAttr", vars, append = TRUE,row.names=FALSE)
+    dbWriteTable(.rqda$qdacon, "caseAttr", vars, append = TRUE,row.namess=FALSE)
   }
   }
   window$Destroy()## close
@@ -178,7 +178,7 @@ saveFUN4FileAttr <- function(button,data){
     if (any(new_idx)){
     ## add the new variable to table
     vars <- data.frame(variable=ans[new_idx,1],value=ans[new_idx,2],fileID=MoreArgs$fileId,date=date(),dateM=NA,owner=.rqda$owner,status=1)
-    dbWriteTable(.rqda$qdacon, "fileAttr", vars, append = TRUE,row.names=FALSE)
+    dbWriteTable(.rqda$qdacon, "fileAttr", vars, append = TRUE,row.namess=FALSE)
     }
   }
   window$Destroy()## close
@@ -565,7 +565,7 @@ importAttr <- function(data, type='file', filename){
 ##      ans <- data.frame(Variable=ans[idx1],Value=ans[idx2])
 ##      ans <- cbind(ans,ID)
 ##      dbGetQuery(.rqda$qdacon,sprintf("delete from caseAttr where caseid='%s'",ID))
-##      dbWriteTable(.rqda$qdacon, "caseAttr", ans, append = TRUE,row.names=FALSE)
+##      dbWriteTable(.rqda$qdacon, "caseAttr", ans, append = TRUE,row.namess=FALSE)
 ##      window$Destroy()## close
 ##    }
 

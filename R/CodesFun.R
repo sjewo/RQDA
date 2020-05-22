@@ -833,7 +833,7 @@ AddToCodeCategory <- function (Widget = .rqda$.codes_rqda, updateWidget = TRUE)
                             catid = CodeCatid, date = date(), dateM = date(),
                             memo = "", status = 1, owner=.rqda$owner)
           success <- dbWriteTable(.rqda$qdacon, "treecode",
-                                  DAT, row.name = FALSE, append = TRUE)
+                                  DAT, row.names = FALSE, append = TRUE)
           if (success && updateWidget) {
             UpdateCodeofCatWidget()
           }
